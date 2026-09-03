@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "Buckland\\x64\\Debug\\main.obj",
+            "outputs": [
+                "Buckland\\x64\\Debug\\main.cpp.obj.dt.module.json",
+                "Buckland\\x64\\Debug\\main.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Buckland.vcxproj" Id="0efd145d-a83c-437d-b988-3ad2e3967ed1" />
+</Solution>
