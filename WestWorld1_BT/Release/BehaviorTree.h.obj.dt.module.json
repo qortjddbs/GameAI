@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": ".\\Release\\BehaviorTree.obj",
+            "outputs": [
+                ".\\Release\\BehaviorTree.h.obj.dt.module.json",
+                ".\\Release\\BehaviorTree.h.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}

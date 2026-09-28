@@ -1,0 +1,7 @@
+﻿  BaseGameEntity.cpp
+  MinerBehaviors.cpp
+  main.cpp
+C:\GameAI\WestWorld1_BT\MinerBehaviors.cpp(5,10): error C1083: 포함 파일을 열 수 없습니다. 'misc/ConsoleUtils.h': No such file or directory
+C:\GameAI\WestWorld1_BT\main.cpp(3,10): error C1083: 포함 파일을 열 수 없습니다. 'ConsoleUtils.h': No such file or directory
+  Miner.cpp
+  코드를 생성하고 있습니다...

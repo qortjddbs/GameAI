@@ -1,0 +1,97 @@
+#ifndef MINER_H
+#define MINER_H
+//------------------------------------------------------------------------
+//
+//  Name:   Miner.h
+//
+//  Desc:   A goldminer driven by a behavior tree and message flags.
+//
+//------------------------------------------------------------------------
+#include <string>
+
+#include "BaseGameEntity.h"
+#include "Locations.h"
+#include "BehaviorTree.h"
+
+struct Telegram;
+class Miner;
+
+//the amount of gold a miner must have before he feels comfortable
+const int ComfortLevel       = 5;
+//the amount of nuggets a miner can carry
+const int MaxNuggets         = 3;
+//above this value a miner is thirsty
+const int ThirstLevel        = 5;
+//above this value a miner is sleepy
+const int TirednessThreshold = 5;
+
+enum miner_activity
+{
+  activity_none,
+  activity_mining,
+  activity_banking,
+  activity_sleeping,
+  activity_drinking
+};
+
+class Miner : public BaseGameEntity
+{
+private:
+
+  BehaviorNode<Miner>*  m_pBehaviorTree;
+
+  miner_activity        m_CurrentActivity;
+  
+  location_type         m_Location;
+
+  //how many nuggets the miner has in his pockets
+  int                   m_iGoldCarried;
+
+  int                   m_iMoneyInBank;
+
+  //the higher the value, the thirstier the miner
+  int                   m_iThirst;
+
+  //the higher the value, the more tired the miner
+  int                   m_iFatigue;
+
+  //set by Msg_StewReady, consumed by the behavior tree
+  bool                  m_bStewReady;
+
+public:
+
+  Miner(int id);
+
+  ~Miner();
+
+  void Update();
+
+  virtual bool HandleMessage(const Telegram& msg);
+
+  location_type  Location()const{return m_Location;}
+  void           ChangeLocation(const location_type loc){m_Location=loc;}
+
+  miner_activity CurrentActivity()const{return m_CurrentActivity;}
+  void           ChangeActivity(const miner_activity activity){m_CurrentActivity = activity;}
+    
+  int            GoldCarried()const{return m_iGoldCarried;}
+  void           SetGoldCarried(const int val){m_iGoldCarried = val;}
+  void           AddToGoldCarried(const int val);
+  bool           PocketsFull()const{return m_iGoldCarried >= MaxNuggets;}
+
+  bool           Fatigued()const;
+  void           DecreaseFatigue(){m_iFatigue -= 1;}
+  void           IncreaseFatigue(){m_iFatigue += 1;}
+
+  int            Wealth()const{return m_iMoneyInBank;}
+  void           SetWealth(const int val){m_iMoneyInBank = val;}
+  void           AddToWealth(const int val);
+
+  bool           Thirsty()const; 
+  void           BuyAndDrinkAWhiskey(){m_iThirst = 0; m_iMoneyInBank-=2;}
+
+  bool           StewReady()const{return m_bStewReady;}
+  void           ClearStewReady(){m_bStewReady = false;}
+};
+
+#endif
