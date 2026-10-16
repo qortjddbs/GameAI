@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="FSM.vcxproj" Id="0ee55c11-174f-43a6-a2e9-208e420b429d" />
+</Solution>
